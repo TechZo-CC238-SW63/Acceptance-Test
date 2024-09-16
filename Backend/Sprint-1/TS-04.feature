@@ -1,41 +1,39 @@
-Feature: TS03 - API ONGs
+Feature: TS04 - API Memberships
 
-  Como usuario developer que configura la plataforma
-  Quiero diseñar una API que simplifique la obtención de información sobre las ONGs
-  Para integrarla de manera efectiva en la aplicación.
+    Como usuario members que configura la plataforma
+    Quiero diseñar una API que facilite la gestión de membresías de usuarios
+    Para ofrecer beneficios al usuario
 
-  Scenario: Diseño de la API ONGs
-    Given que el usuario developer configura la plataforma
-    When diseñe la API para obtener información sobre las ONGs
-    Then define los endpoints y rutas necesarias para recibir detalles sobre las ONGs
-    And establece los requisitos de autenticación y seguridad necesarios.
+    Scenario: Diseño de la API de Membresías
+        Given que el usuario developer está configurando la plataforma
+        When diseña la API de Membresías para gestionar las membresías de los usuarios
+        Then define los endpoints y rutas necesarios para permitir a los usuarios obtener membresías y obtener información sobre sus características.
 
-  Scenario: Selección de la tecnología para la API
-    Given que el usuario developer está diseñando la API para obtener información sobre las ONGs
-    When elija la tecnología para implementar la API REST
-    Then considerará los requisitos y preferencias de la organización para tomar una decisión informada.
+    Scenario: Implementación de la Operación POST para Membresías
+        Given que el usuario developer está desarrollando la API de Membresías en la aplicación
+        When elige la tecnología para implementar la API REST
+        Then se consideran los requisitos de la aplicación, incluyendo la escalabilidad, el rendimiento y la facilidad de mantenimiento.
 
-  Scenario: Obtener información de la ONG
-    Given que el endpoint "/ongs" está disponible
-    When se envía una solicitud GET con el identificador de la ONG
-    Then se recibe una respuesta con estado 200
-    And se obtienen los datos de la ONG solicitada.
+    Scenario: Creación de una nueva membresía
+        Given que el endpoint "/membresias" está disponible
+        When se envía una solicitud POST con los detalles de la membresía
+        Then se recibe una respuesta con estado 201
+        And se registra la membresía con un nuevo ID y los detalles registrados.
 
-  Scenario: Obtener ONG no disponible
-    Given que el endpoint "/ongs" está disponible
-    When se envía una solicitud GET con un identificador de ONG que no existe
-    Then se recibe una respuesta con estado 404
-    And se muestra un mensaje que indica "No existe una ONG con este identificador".
+    Scenario: Membresía ya existente
+        Given que el endpoint "/membresias" está disponible
+        When se intenta crear una nueva membresía que ya existe
+        Then se recibe una respuesta con estado 400
+        And se muestra un mensaje que indica "La membresía ya está creada".
 
-  Scenario: Agregar una nueva ONG
-    Given que el endpoint "/ongs" está disponible
-    When se envía una solicitud POST con los valores de la ONG
-    Then se recibe una respuesta con estado 201
-    And se incluye una ONG con un nuevo ID y sus valores registrados.
+    Scenario: Obtener información de membresías
+        Given que el endpoint "/membresias" está disponible
+        When se envía una solicitud GET con el identificador de la membresía
+        Then se recibe una respuesta con estado 200
+        And se obtienen los detalles de la membresía solicitada.
 
-  Scenario: Agregar una ONG ya existente
-    Given que el endpoint "/ongs" está disponible
-    When se envía una solicitud POST con los datos de la ONG
-    And ya existe una ONG registrada con esos datos
-    Then se recibe una respuesta con estado 400
-    And se muestra un mensaje que dice "Una ONG con estos datos ya existe".
+    Scenario: Membresía no encontrada
+        Given que el endpoint "/membresias" está disponible
+        When se envía una solicitud GET con un identificador de una membresía que no existe
+        Then se recibe una respuesta con estado 404
+        And se muestra un mensaje que indica "No se encontró la membresía".
