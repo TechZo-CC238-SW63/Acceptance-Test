@@ -17,10 +17,10 @@ Feature: TS05 - API Object
     And se obtienen los detalles del objeto solicitado.
 
   Scenario: Objeto no encontrado
-    Given que el endpoint "/objects" está disponible
-    When se envía una solicitud GET con un identificador de un objeto que no existe
-    Then se recibe una respuesta con estado 404
-    And se muestra un mensaje que indica "No se encontró el objeto solicitado".
+      Given que el endpoint "/objects" está disponible
+      When se envía una solicitud GET con un identificador de un objeto que no existe
+      Then se recibe una respuesta con estado 404
+      And se muestra un mensaje que indica "No se encontró el objeto solicitado".
 
   Scenario: Creación de un nuevo objeto
     Given que el endpoint "/objects" está disponible
